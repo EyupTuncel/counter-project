@@ -1,30 +1,37 @@
 <script lang="ts">
-	import AddCounter from "./components/AddCounter.svelte"
-	import Counter from "./components/Counter.svelte"
+	 import AddCounter from './components/AddCounter.svelte'
+    import Counter from './components/Counter.svelte'
+    
 	
-	let counters = [
-		{name:"new",
-		value:0,
-		id:0
-}
+	$: counters = [
+	{
+		name: 'new',
+		value: 0,
+		id: 0
+	}
 	];
-	$: newid = counters.length ? counters[counters.length -1].id + 1 : 0; 
-    $: list = counters.map((counter) => counter.name).join();
-	$: gokei = counters.map((item) => item.value).reduce((total,current) => total+current);
-	
+	$: list = counters.map((counter)=>counter.name).join(',');
+	$: gokei = counters.length ? counters.map(item => item.value).reduce((prev, next) => prev + next) : 0;
+	$: newid = counters.length ? Math.max(...(counters.map((c)=>c.id))) + 1 : 0;
+;
 
-	const addCounter = (e:any) =>{
-		const newCounter = e.detail; //Burdaki detail bana dispatchte parametre olarak verdigim counteri gonderiyor
-	counters = [...counters,newCounter];
+	const addCounter = (e:any) => {
+		
+		const newCounter = {
+			name: 'new',
+			value: 0,
+			id: newid
+		}
+		counters = [...counters, newCounter];
 	}
 
-	const removeCounter = (e:any)=>{
-		counters = counters.filter((counter) => counter.id !== e.detail ); //dispatchin ikinci olarak 
- 	};
+	const removeCounter = (e:any) => {
+		counters = counters.filter((counter)=> counter.id !== e.detail)
+	}
 </script>
 
 <main>
-	<div class="container">
+	<div class="new">
 	<h1 style="font-size: 4rem;display: block;    
     ">Multiple Counter</h1>
 	
@@ -42,7 +49,7 @@
 		<div class="info"><span>TITLE LIST:{list}</span></div>
 		<div class="info"><span>SUM OF COUNT:{gokei}</span></div>
 		<div>
-		<AddCounter on:addcounter={addCounter}  id={newid} />
+			<AddCounter on:addcounter={addCounter} />
 		</div>
 	</div>
 

@@ -1,23 +1,11 @@
 <script lang="ts">
-import { createEventDispatcher } from 'svelte'
+    import { createEventDispatcher } from 'svelte'
 
 const dispatch = createEventDispatcher();
-export let id:number;
-
-let counter ={
-    name:`new `,
-    value:0,
-    id:id
-};
 
 function addNewCounter(e:any){
     e.preventDefault();
-    dispatch("addcounter",counter);//Burda yukardaki leti kullaniyorum bu fonksiyonun icinde counteri degistiriyorum
-    counter = {
-        name:`new `,
-        value:0,
-        id:id+1
-    };
+    dispatch("addcounter");
 }
 	
 </script>
