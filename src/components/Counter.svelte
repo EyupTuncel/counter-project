@@ -59,7 +59,7 @@ main{
     border-radius: 10px;
     margin-right: auto;
     margin-left: auto;
-    width:500px;
+    width:80%;
 }
 @media(min-width:640px){
     main{
