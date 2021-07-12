@@ -29,6 +29,6 @@ function addNewCounter(e:any){
 <style>
 	.add{
         background-color: #68d391;
-        width: 200px;
+        width: 80%;
     }
 </style>

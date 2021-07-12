@@ -31,14 +31,15 @@ const deleteCounter = () => {
 	
 
 h2{
-    margin-right: 35px;
-    margin-left: 35px;
+    margin-right: 5%;
+    margin-left: 5%;
+    width: 10%;
 }
  button{
     color:#333;
     padding:8px;
     border-radius: 5x;
-    width:50px;
+    width:10%;
     display:flex;
     font-size:20px;
     align-items: center;
@@ -59,7 +60,10 @@ main{
     border-radius: 10px;
     margin-right: auto;
     margin-left: auto;
-    width:80%;
+    width:90%;
+}
+input{
+    width: 30%;
 }
 @media(min-width:640px){
     main{
