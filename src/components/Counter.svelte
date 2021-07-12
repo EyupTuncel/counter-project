@@ -29,16 +29,12 @@ const deleteCounter = () => {
 
 <style>
 	
-.card {
-    margin-right: auto;
-    margin-left: auto;
-    width:200px;
-}
+
 h2{
     margin-right: 35px;
     margin-left: 35px;
 }
-.card button{
+ button{
     color:#333;
     padding:8px;
     border-radius: 5x;
@@ -60,9 +56,10 @@ main{
     align-items: center;
     justify-content: center;
     background-color:skyblue;
-    margin-left: 500px;
-    width: 600px;
     border-radius: 10px;
+    margin-right: auto;
+    margin-left: auto;
+    width:500px;
 }
 @media(min-width:640px){
     main{
