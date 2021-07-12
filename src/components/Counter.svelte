@@ -29,7 +29,12 @@ const deleteCounter = () => {
 
 <style>
 	
-.card h2{
+.card {
+    margin-right: auto;
+    margin-left: auto;
+    width:200px;
+}
+h2{
     margin-right: 35px;
     margin-left: 35px;
 }
