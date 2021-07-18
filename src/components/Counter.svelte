@@ -1,36 +1,41 @@
 <script lang="ts">
-	import { createEventDispatcher } from "svelte/internal";
+	import { createEventDispatcher } from "svelte";
 
  export let name:string;
-export let value:number;
+export let count:number;
 export let id:number ;
 
 const dispatch = createEventDispatcher();
 
 
-const addPoint = () => { if (value < 100) { value+=1;}}
-const removePoint = () => { if (value > 0) { value-=1;}}
-const resetPoint = () => (value = 0);
+const addPoint = () => { if (count < 100) { count+=1;}}
+const removePoint = () => { if (count > 0) { count-=1;}}
+const resetPoint = () => (count = 0);
 const deleteCounter = () => {
-   dispatch("removecounter",id);
+   dispatch("remove",id);
 };
 </script>
 
-<main>
+
 	<div class="card">
-        <input type="text" style ="background-color: white;border-radius: 5px;"placeholder="new" bind:value={name}/>
-        <h2>{value}</h2>
-        <button  style ="border-radius: 3px;background-color: #f56565;;border-radius: 5px;"class="button" on:click={addPoint}>+</button>
-        <button style="background-color: #4299e1 ;border-radius: 5px;"class="button" on:click={removePoint}>-</button>
-        <button style="background-color: #ecc94b; ;border-radius: 5px;" class="button" on:click={resetPoint}>0</button>
-        <button class="button ;border-radius: 5px;" on:click={deleteCounter}>X</button>
+        <input  class="input" type="text" placeholder="new" bind:value={name}/>
+        <div class="h2">{count}</div>
+        <button class="add"  on:click={addPoint}>+</button>
+        <button class="remove"  on:click={removePoint}>-</button>
+        <button class="reset"   on:click={resetPoint}>0</button>
+        <button class="delete"  on:click={deleteCounter}>X</button>
     </div>
-</main>
+
 
 <style>
-	
-
-h2{
+	.input{
+        background-color: white;border-radius: 5px;
+    }
+    .add{background-color: #f56565;border-radius: 5px;}
+    .remove{background-color: #4299e1 ;border-radius: 5px;}
+    .reset{background-color: #ecc94b ;border-radius: 5px;}
+.delete{background-color: white;border-radius: 5px;}
+.h2{
     margin-right: 5%;
     margin-left: 5%;
     width: 10%;
@@ -45,12 +50,7 @@ h2{
     align-items: center;
     justify-content: center;
 }
-main{
-    text-align: center;
-    padding:5px;
-    max-width: 250px;
-    margin:0 auto;
-}
+
 .card {
     display:flex;
     flex-direction:row;

@@ -10,9 +10,9 @@ function addNewCounter(e:any){
 	
 </script>
 
-<main>
+
 <button class="add" on:click={addNewCounter}>new counter</button>	
-</main>
+
 
 <style>
 	.add{
