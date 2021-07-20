@@ -11,7 +11,7 @@ function addNewCounter(e:any){
 </script>
 
 
-<button class="add" on:click={addNewCounter}>new counter</button>	
+<button class="add" on:click>new counter</button>	
 
 
 <style>
