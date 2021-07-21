@@ -6,23 +6,21 @@
     return { name: "new", count: 0, id: newid };
   }
 
-  let newid: number = 0;
   let counters: { name: string; count: number; id: number }[] = [
     getNewCounter(),
   ];
   $: listTitles = counters.map((counter) => counter.name);
   let total: Number;
-  $: total = counters.reduce(function (total, counter) {
-    return total + counter.count;
-  }, 0);
+
+  $: total = counters.reduce((total, counter) => total + counter.count, 0);
+
   $: newid = counters.length ? Math.max(...counters.map((c) => c.id)) + 1 : 0;
   const addCounter = (e: any) => {
     const newCounter = getNewCounter();
     counters = [...counters, newCounter];
   };
 
-  function removeCounter(counterId) {
-    console.log(counterId);
+  function removeCounter(counterId: number) {
     counters = counters.filter((counter) => counter.id !== counterId);
   }
 </script>
@@ -31,9 +29,7 @@
   <div class="new">
     <h1>Multiple Counter</h1>
 
-    {#if counters.length === 0}
-      <p>カウンターはありません</p>
-    {:else}
+    {#if counters.length}
       {#each counters as counter}
         <Counter
           bind:name={counter.name}
