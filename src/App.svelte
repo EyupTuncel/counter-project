@@ -11,20 +11,20 @@
     getNewCounter(),
   ];
   $: listTitles = counters.map((counter) => counter.name);
-  let total : Number
-  $: total =  counters.reduce(function(total, counter)  {
-  		return total + counter.count;
-	}, 0);
+  let total: Number;
+  $: total = counters.reduce(function (total, counter) {
+    return total + counter.count;
+  }, 0);
   $: newid = counters.length ? Math.max(...counters.map((c) => c.id)) + 1 : 0;
   const addCounter = (e: any) => {
     const newCounter = getNewCounter();
     counters = [...counters, newCounter];
   };
 
-  function removeCounter (counterId) {
-	  console.log(counterId);
+  function removeCounter(counterId) {
+    console.log(counterId);
     counters = counters.filter((counter) => counter.id !== counterId);
-  };
+  }
 </script>
 
 <main>
