@@ -10,12 +10,11 @@
     getNewCounter(),
   ];
   $: listTitles = counters.map((counter) => counter.name);
-  let total: Number;
 
   $: total = counters.reduce((total, counter) => total + counter.count, 0);
 
   $: newid = counters.length ? Math.max(...counters.map((c) => c.id)) + 1 : 0;
-  const addCounter = (e: any) => {
+  const addCounter = () => {
     const newCounter = getNewCounter();
     counters = [...counters, newCounter];
   };
@@ -29,16 +28,14 @@
   <div class="new">
     <h1>Multiple Counter</h1>
 
-    {#if counters.length}
-      {#each counters as counter}
-        <Counter
-          bind:name={counter.name}
-          bind:count={counter.count}
-          bind:id={counter.id}
-          on:remove={() => removeCounter(counter.id)}
-        />
-      {/each}
-    {/if}
+    {#each counters as counter}
+      <Counter
+        bind:name={counter.name}
+        bind:count={counter.count}
+        on:remove={() => removeCounter(counter.id)}
+      />
+    {/each}
+
     <div class="info">TITLE LIST:{listTitles}</div>
     <div class="info">SUM OF COUNT:{total}</div>
     <div>

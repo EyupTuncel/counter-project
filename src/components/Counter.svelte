@@ -3,7 +3,6 @@
 
   export let name: string;
   export let count: number;
-  export let id: number;
 
   const dispatch = createEventDispatcher();
 
@@ -19,7 +18,7 @@
   };
   const resetPoint = () => (count = 0);
   const deleteCounter = () => {
-    dispatch("remove", id);
+    dispatch("remove");
   };
 </script>
 
